@@ -17,6 +17,25 @@ public class Drive extends SubsystemBase {
   MotorControllerGroup left = new MotorControllerGroup(frontLeft, rearLeft);
   MotorControllerGroup right = new MotorControllerGroup(frontRight, rearRight);
 
+  public void stop(){
+    frontLeft.stopMotor();
+    frontRight.stopMotor();
+    rearLeft.stopMotor();
+    rearRight.stopMotor();
+    
+  }
+
+
+  public void arcadeDrive(double forwardSpeed, double turnSpeed) {
+    double left = forwardSpeed + turnSpeed;
+    double right = forwardSpeed - turnSpeed;
+
+    rearRight.set(right);
+    frontRight.set(right);
+    rearLeft.set(left);
+    frontLeft.set(left);
+  }
+
   public void setVolts(double leftV, double rightV) {
     left.setVoltage(leftV);
     right.setVoltage(rightV);
