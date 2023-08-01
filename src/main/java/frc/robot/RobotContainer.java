@@ -9,9 +9,11 @@ import java.lang.ModuleLayer.Controller;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.*;
+import frc.robot.Commands.*;
 import frc.robot.subsystems.Drive;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -25,6 +27,9 @@ public class RobotContainer {
 // private final Joystick m_Joystick = new Joystick(0);
 
   // Default Commands
+
+  //Other
+  public static SendableChooser<String> m_chooser;
 
 
 
@@ -66,7 +71,12 @@ public class RobotContainer {
     // An ExampleCommand will run in autonomous
     return new TimedDrive(m_Drive, 1, 1);
   }
-// public Command Drive(){
-//   return new Driving(m_Drive, m_Joystick.getRawAxis(1),m_Joystick.getRawAxis(3));
-// }
+
+  public void dashboardinit () {
+
+  //auto
+    m_chooser.setDefaultOption("null", "null");
+    m_chooser.addOption("straight", "straight");
+  
+  }
 }
