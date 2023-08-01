@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
@@ -16,6 +17,7 @@ public class Drive extends SubsystemBase {
 
   MotorControllerGroup left = new MotorControllerGroup(frontLeft, rearLeft);
   MotorControllerGroup right = new MotorControllerGroup(frontRight, rearRight);
+  private final Joystick m_Joystick = new Joystick(0);
 
   public void stop(){
     frontLeft.stopMotor();
@@ -48,7 +50,9 @@ public class Drive extends SubsystemBase {
     right.setInverted(true);
   }
 
-  public void periodic() {}
+  public void periodic() {
+    arcadeDrive(m_Joystick.getRawAxis(4), -m_Joystick.getRawAxis(1));
+  }
 
   public Rotation2d getGyroYaw() {
     return gyro.getRotation2d();
