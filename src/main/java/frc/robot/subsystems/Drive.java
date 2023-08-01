@@ -31,8 +31,8 @@ public class Drive extends SubsystemBase {
 
   public void periodic() {}
 
-  public Rotation2d getGyroYaw() {
-    return gyro.getRotation2d();
+  public double getGyroYaw() {
+    return gyro.getRotation2d().getDegrees();
   }
 
   public void humanDrive(double fwd, double rot) {
