@@ -4,12 +4,12 @@
 
 package frc.robot;
 
-import java.lang.ModuleLayer.Controller;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.Commands.TimedDrive;
+import frc.robot.Commands.*;
+import frc.robot.commands.GyroRotate;
 import frc.robot.subsystems.Drive;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -63,6 +63,6 @@ private final Joystick m_Joystick = new Joystick(0);
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new TimedDrive(m_Drive, 1, 1);
+    return new GyroRotate(m_Drive, 45);//TimedDrive(m_Drive, 1, 1);
   }
 }
