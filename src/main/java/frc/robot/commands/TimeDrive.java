@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Timer;
 public class TimeDrive extends CommandBase {
   Drive train;
   double t, th;
-  Timer timer;
+  Timer timer=new Timer();
 
   public TimeDrive(Drive drive, double time, double throttle) {
     t = time;
@@ -20,7 +20,10 @@ public class TimeDrive extends CommandBase {
     train.humanDrive(th, 0);
   }
 
-  public void end() {}
+  public void end() {
+    train.humanDrive(0, 0);
+    timer.stop();
+  }
   public boolean isFinished(){
     return timer.get()>t;
   }
