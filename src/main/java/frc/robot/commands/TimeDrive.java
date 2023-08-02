@@ -6,18 +6,19 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class TimeDrive extends CommandBase {
   Drive train;
-  double t, th;
+  double t, th, rotation;
   Timer timer=new Timer();
 
-  public TimeDrive(Drive drive, double time, double throttle) {
+  public TimeDrive(Drive drive, double time, double throttle, double rotation) {
     t = time;
     th = throttle;
     train = drive;
+    this.rotation=rotation;
     timer.start();
   }
 
   public void execute() {
-    train.humanDrive(th, 0);
+    train.humanDrive(th, rotation);
   }
 
   public void end() {
