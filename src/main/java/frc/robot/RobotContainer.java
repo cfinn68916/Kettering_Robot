@@ -39,7 +39,7 @@ public class RobotContainer {
 
   // Set Subsystem Default Commands
   public void setDefaultCommands() {
-    m_Drive.setDefaultCommand(getAutonomousCommand());
+//    m_Drive.setDefaultCommand(getAutonomousCommand());
   }
 
   /**
@@ -60,6 +60,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new GyroRotate(m_Drive, 45);//TimedDrive(m_Drive, 1, 1);
+    return new Nsides(m_Drive, 4);//GyroRotate(m_Drive, 45);//TimedDrive(m_Drive, 1, 1);
   }
 }
